@@ -88,7 +88,7 @@ echo "</ul>";
 </form>
 
 
-<h2>Étudiants(modification)/h2>
+<h2>Étudiants(modification)</h2>
 <ul>
 <?php
 $stmt = $dbPDO->prepare("SELECT Id_eleve, nom, prenom FROM Eleves");
