@@ -88,7 +88,7 @@ echo "</ul>";
 </form>
 
 
-<h2>Étudiants</h2>
+<h2>Étudiants(modification)/h2>
 <ul>
 <?php
 $stmt = $dbPDO->prepare("SELECT Id_eleve, nom, prenom FROM Eleves");
@@ -97,6 +97,23 @@ $eleves = $stmt->fetchAll(PDO::FETCH_CLASS);
 
 foreach($eleves as $e){
     echo "<li>$e->nom $e->prenom - <a href='Views/modif_etudiant.php?id=$e->Id_eleve'>Modifier</a></li>";
+}
+?>
+</ul>
+
+
+<h2>Étudiants(supression)</h2>
+<ul>
+<?php
+$stmt = $dbPDO->prepare("SELECT Id_eleve, nom, prenom FROM Eleves");
+$stmt->execute();
+$eleves = $stmt->fetchAll(PDO::FETCH_CLASS);
+
+foreach($eleves as $e){
+    echo "<li>$e->nom $e->prenom - 
+            <a href='Views/modif_etudiant.php?id=$e->Id_eleve'>Modifier</a> | 
+            <a href='Views/suppression_etudiant.php?id=$e->Id_eleve'>Supprimer</a>
+          </li>";
 }
 ?>
 </ul>
